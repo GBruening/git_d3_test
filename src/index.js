@@ -45,7 +45,7 @@ var barChart = svg.selectAll('barChart')
         return 70+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9);
     })
     .attr('y',function(d) { 
-        return  2*(plotHeight-d*plotHeight)-60; 
+        return  2*(plotHeight-d*plotHeight)-45; 
     })
     .attr("height",function(d) { 
         return  2*(d-.45)*plotHeight; 
@@ -187,7 +187,7 @@ var y_axis = d3.axisLeft()
 
 //Append group and insert axis
 var xaxisshiftx = barGroupWidth+barWidth+barPadding+25;
-var xaxisshifty = plotHeight-13.5;
+var xaxisshifty = plotHeight-10;
 var xaxisshiftx2 = barGroupWidth+barWidth+barPadding+0;
 
 svg.append("g")
@@ -203,9 +203,9 @@ svg.append('line')
     .style('stroke','black')
     .style('stroke-width',1)
     .attr('x1',xaxisshiftx-barGroupWidth/2+3)
-    .attr('y1',xaxisshifty-9.5)
+    .attr('y1',xaxisshifty-3)
     .attr('x2',xaxisshiftx-22+plotWidth+barGroupWidth/2)
-    .attr('y2',xaxisshifty-9.5);
+    .attr('y2',xaxisshifty-3);
 
 // Labels
 svg.append('text')
