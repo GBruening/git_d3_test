@@ -82,8 +82,8 @@ var svg = d3.select('svg'),
     svgWidth = +svg.attr('width') - margin.left - margin.right,
     svgHeight = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    plotHeight = svgHeight  + 20,
-    plotWidth = svgWidth *.7;
+    plotHeight = svgHeight,
+    plotWidth = svgWidth;
 
 var barPadding = 0;
 var barGroupWidth = plotWidth / 9;
