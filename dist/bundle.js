@@ -78,12 +78,12 @@ var data8 = [0.79244,0.79849,0.7776,0.80524,0.79743,0.79809,0.78843,0.73149,0.80
 var data9 = [0.78752,0.81229,0.81117,0.82155,0.83349,0.84265,0.81756,0.79909,0.81751];
 
 var svg = d3.select('svg'),
-    margin = {top: 20, right: 20, bottom: 30, left: 40},
+    margin = {top: 20, right: 0, bottom: 30, left: 40},
     svgWidth = +svg.attr('width') - margin.left - margin.right,
     svgHeight = +svg.attr("height") - margin.top - margin.bottom,
     g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")")
-    plotHeight = svgHeight,
-    plotWidth = svgWidth;
+    plotHeight = svgHeight+20,
+    plotWidth = svgWidth*.9;
 
 var barPadding = 0;
 var barGroupWidth = plotWidth / 9;
@@ -111,7 +111,7 @@ var barChart = svg.selectAll('barChart')
     .enter()
     .append("rect")
     .attr('x',function(d,i) {
-        return 60+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9);
+        return 70+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9);
     })
     .attr('y',function(d) { 
         return  2*(plotHeight-d*plotHeight)-60; 
@@ -151,8 +151,8 @@ var barChart = svg.selectAll('barChart')
         bartooltip
         .text(d)
         .style('visibility','visible')
-        .style("top", 2*(plotHeight-d*plotHeight)-95 +"px")
-        .style("left",45+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");    
+        .style("top", 2*(plotHeight-d*plotHeight)-75 +"px")
+        .style("left",55+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");    
     })
     .on('mouseout',function(d,i){
         if (bartooltip2.attr('barselect')==i){
@@ -179,8 +179,8 @@ var barChart = svg.selectAll('barChart')
                 .text(d)
                 .attr('barselect',i)
                 .style('visibility','visible')
-                .style("top", 2*(plotHeight-d*plotHeight)-95+"px")
-                .style("left",45+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");
+                .style("top", 2*(plotHeight-d*plotHeight)-75+"px")
+                .style("left",55+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");
         }
         else if (bartooltip2.attr('active') == 1 && bartooltip2.attr('barselect')==i){
             d3.select(this).attr('opacity',.5)
@@ -190,8 +190,8 @@ var barChart = svg.selectAll('barChart')
                 .text(d)
                 .attr('barselect',-1)
                 .style('visibility','hidden')
-                .style("top", 2*(plotHeight-d*plotHeight)-95+"px")
-                .style("left",45+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");
+                .style("top", 2*(plotHeight-d*plotHeight)-75+"px")
+                .style("left",55+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");
         }   
         else if (bartooltip2.attr('active') == 1){
             barChart.attr('opacity',function(d,i){
@@ -205,8 +205,8 @@ var barChart = svg.selectAll('barChart')
                 .attr('barselect',i)
                 .text(d)
                 .style('visibility','visible')
-                .style("top", 2*(plotHeight-d*plotHeight)-95+"px")
-                .style("left",45+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");
+                .style("top", 2*(plotHeight-d*plotHeight)-75+"px")
+                .style("left",55+barWidth*(i%9) + (barGroupWidth+groupPadding/2)*Math.floor(i/9)+"px");
         }
     })
     ;
@@ -235,7 +235,7 @@ var xdomain = d3.extent(min_funcs,function(d){
 
 var scalex = d3.scaleLinear()
     .domain([1,9])
-    .range([0, plotWidth-35]);
+    .range([30, plotWidth]);
 
 var scaley = d3.scaleLinear()
     .domain([.85,.45])
@@ -255,9 +255,9 @@ var y_axis = d3.axisLeft()
     .ticks(9);
 
 //Append group and insert axis
-var xaxisshiftx = barGroupWidth+barWidth+barPadding+11;
+var xaxisshiftx = barGroupWidth+barWidth+barPadding+25;
 var xaxisshifty = plotHeight-13.5;
-var xaxisshiftx2 = barGroupWidth+barWidth+barPadding+18;
+var xaxisshiftx2 = barGroupWidth+barWidth+barPadding+0;
 
 svg.append("g")
     .attr('transform','translate('+xaxisshiftx2+','+xaxisshifty+')')
@@ -403,8 +403,8 @@ legend.append('circle')
                     eval('tooltip'+k+
                         '.text(d1['+ind+'])'+
                         '.style("visibility","visible")'+
-                        '.style("top", 2*(plotHeight-'+r_sq+'*plotHeight)-80 +"px")'+
-                        '.style("left",45+barWidth*('+i+'%9) + (barGroupWidth+groupPadding/2)*'+ind+'+"px");')
+                        '.style("top", 2*(plotHeight-'+r_sq+'*plotHeight)-75 +"px")'+
+                        '.style("left",55+barWidth*('+i+'%9) + (barGroupWidth+groupPadding/2)*'+ind+'+"px");')
                 }
             }
         
