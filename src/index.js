@@ -16,6 +16,11 @@ var svg = d3.select('svg'),
     plotHeight = svgHeight+20,
     plotWidth = svgWidth*.9;
 
+// svg.append('rect')
+//     .attr('width','100%')
+//     .attr('height','100%')
+//     .attr('fill','black')
+    
 var barPadding = 0;
 var barGroupWidth = plotWidth / 9;
 var barWidth = barGroupWidth/10;
@@ -147,6 +152,7 @@ var bartooltip = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .text("a simple tooltip");
 
 var bartooltip2 = d3.select("body")
@@ -156,6 +162,7 @@ var bartooltip2 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .text("a simple tooltip");
 
 // Axis
@@ -197,10 +204,11 @@ svg.append("g")
 
 svg.append('g')
     .call(y_axis)
+    .attr('class','axisWhite')
     .attr('transform','translate('+54+','+50.5+')');
 
 svg.append('line')
-    .style('stroke','black')
+    .style('stroke','white')
     .style('stroke-width',1)
     .attr('x1',xaxisshiftx-barGroupWidth/2+3)
     .attr('y1',xaxisshifty-3)
@@ -212,12 +220,14 @@ svg.append('text')
     .attr('x',plotWidth/2+barGroupWidth)
     .attr('y',20)
     .style('text-anchor','middle')
+    .style('fill','white')
     .text("Computed R Squared Values for Proxy Fits by Minimization Function")
 
 svg.append('text')
     .attr('x',plotWidth/2+barGroupWidth)
     .attr('y',plotHeight+20)
     .style('text-anchor','middle')
+    .style('fill','white')
     .text("Neuromechanical Proxy")
 
 svg.append('text')
@@ -225,6 +235,7 @@ svg.append('text')
     .attr('y',20)
     .attr('x',0-plotHeight/2)
     .style('text-anchor','middle')
+    .style('fill','white')
     .text('R Squared Value');
 
 // Legend
@@ -236,6 +247,7 @@ var legend = svg.selectAll('.legend')
   .enter()
   .append('g')
   .attr('class', 'legend')
+  .style('fill','white')
   .attr('transform', function(d, i) {
     var height = legendRectSize + legendSpacing;
     var offset =  height * colors2.length / 2;
@@ -248,7 +260,8 @@ legend.append('text')
   .attr('x', legendRectSize + legendSpacing+50)
   .attr('y', legendRectSize - legendSpacing+45)
   .text(function(d,i) { return min_funcs[i] ; })
-  .attr('font-size',12);
+  .attr('font-size',12)
+  .style('fill','white');
 
 legend.append('circle')
     .attr('r', legendRectSize/2)
@@ -402,6 +415,7 @@ var tooltip1 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .attr('selectedmin',-1)
@@ -412,6 +426,7 @@ var tooltip2 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -421,6 +436,7 @@ var tooltip3 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -430,6 +446,7 @@ var tooltip4 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -439,6 +456,7 @@ var tooltip5 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -448,6 +466,7 @@ var tooltip6 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -457,6 +476,7 @@ var tooltip7 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -466,6 +486,7 @@ var tooltip8 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
@@ -475,6 +496,7 @@ var tooltip9 = d3.select("body")
     .style("position", "absolute")
     .style("z-index", "10")
     .style("visibility", "hidden")
+    .style('color','white')
     .attr('active',0)
     .attr('min_func_num',0)
     .text("a simple tooltip");
